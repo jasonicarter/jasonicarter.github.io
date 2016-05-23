@@ -28,4 +28,4 @@ kramdown:
 # Sass settings
 sass:
     sass_dir: _scss # Jekyll default folder
-    style: : compressed
+    style: compressed
