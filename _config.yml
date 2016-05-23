@@ -1,3 +1,4 @@
+# Site settings
 title:            Jason I. Carter
 description:      Human Learning.
 url:              # Site url, without a slash at the end.
@@ -17,8 +18,14 @@ links:
     external:     true
 permalink:        pretty
 
+# Build settings
 highlighter: rouge
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
+
+# Sass settings
+sass:
+    sass_dir: _scss # Jekyll default folder
+    style: : compressed
