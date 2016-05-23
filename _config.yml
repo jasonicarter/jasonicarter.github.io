@@ -1,5 +1,5 @@
-title:            Scribble
-description:      A jekyll theme. Because I scribble.
+title:            Jason I. Carter
+description:      Human Learning.
 url:              # Site url, without a slash at the end.
 signoff:          # Your name.
 disqus_shortname: # disqus comment thread for post header options. ( leave blank if unwanted. )
@@ -9,11 +9,11 @@ google_analytics: # set tracking, remove from /javascripts/basic.js if unwanted.
 links:
   - name:         About
     url:          /about
-  - name:         Blog
-    url:          http://muan.co
-    external:     true
   - name:         GitHub
-    url:          http://github.com/muan
+    url:          http://github.com/jasonicarter
+    external:     true
+  - name:         Twitter
+    url:          http://twitter.com/jasonicarter
     external:     true
 permalink:        pretty
 
