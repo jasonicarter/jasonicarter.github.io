@@ -972,11 +972,11 @@ for ax, title in zip(g.axes.flat, titles):
 
 
 
-![png]({{ site.baseurl }}/notebooks/titanicdata_files/titanicdata_28_1.png)
+![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_28_1.png)
 
 
 
-![png]({{ site.baseurl }}/notebooks/titanicdata_files/titanicdata_28_2.png)
+![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_28_2.png)
 
 
 Based on the raw numbers it would appear as though passengers in Class 3 had a similar survival rate as those from Class 1 with **119 and 136 passengers surviving respectively.** However, looking at the percentages of the overall passengers per class and the total numbers across each class, it can be assumed that **a passenger from Class 1 is about 2.5x times more likely to survive than a passenger in Class 3.**
@@ -1044,7 +1044,7 @@ g = sns.factorplot(x="Survived", y="Age", hue='Sex', data=titanic_data_age_clean
 
 
 
-![png]({{ site.baseurl }}/notebooks/titanicdata_files/titanicdata_31_2.png)
+![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_31_2.png)
 
 
 Based on the above boxplot and calculated data, it would appear that:
@@ -1101,7 +1101,7 @@ for ax, title in zip(g.axes.flat, titles):
 
 
 
-![png]({{ site.baseurl }}/notebooks/titanicdata_files/titanicdata_34_1.png)
+![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_34_1.png)
 
 
 The data, and more so, the graphs tends to support the idea that "women and children first" possibly played a role in the survival of a number of people. It's a bit surprising that more children didn't survive but this could possibly be attributed to the mis-representation of what age is considered as the cut off for adults - i.e. if in the 1900's someone 15-17 were considered adults, they would not have been "saved" under the "women and children first" idea and would be made to fend for themselves. That would in turn, change the outcome of the above data and possible increase the number of children who survived.

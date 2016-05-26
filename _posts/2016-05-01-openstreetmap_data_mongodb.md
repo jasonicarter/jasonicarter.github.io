@@ -27,7 +27,7 @@ Image("https://upload.wikimedia.org/wikipedia/commons/a/a6/Old_Toronto_locator.p
 
 
 
-![png]({{ site.baseurl }}/notebooks/openstreetmap_data_mongodb_files/openstreetmap_data_mongodb_2_0.png)
+![png]({{ site.baseurl }}/assets/posts/openstreetmap_data_mongodb_files/openstreetmap_data_mongodb_2_0.png)
 
 
 
