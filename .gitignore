@@ -3,7 +3,7 @@ _site
 .ruby-version
 .Rproj.user
 _posts/*.csv
-_posts/*.md
+_posts/*.rmd
 _cache
 .Rhistory
 .RData
