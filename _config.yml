@@ -25,6 +25,10 @@ kramdown:
   input: GFM
   hard_wrap: false
 
+exclude:
+  - _posts/*.Rmd
+  - build.R
+
 # Sass settings
 sass:
     sass_dir: _sass # Jekyll default folder
