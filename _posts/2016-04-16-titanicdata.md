@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Looking for survivors with Titanic Data Analysis"
+share: y
+disqus: y
 ---
 
 ## Introduction

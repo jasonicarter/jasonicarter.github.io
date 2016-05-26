@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Stroop Effect"
+share: y
+disqus: y
 ---
 # P1 - Stroop Effect
 
@@ -201,9 +203,9 @@ plt.figure(1, figsize=(9, 6))
 plot1 = plt.boxplot(data,vert=True,widths = 0.2,patch_artist=True)
 
 plt.setp(plot1['boxes'], color='#1b9e77', linewidth=2, facecolor='#1b9e77')
-plt.setp(plot1['whiskers'], color='#7570b3', linewidth=2) 
+plt.setp(plot1['whiskers'], color='#7570b3', linewidth=2)
 plt.setp(plot1['caps'], color='#7570b3', linewidth=2)
-plt.setp(plot1['fliers'], color='#e7298a', marker='o', markersize=10) 
+plt.setp(plot1['fliers'], color='#e7298a', marker='o', markersize=10)
 plt.setp(plot1['medians'], color='#b2df8a', linewidth=2)
 
 # histogram
@@ -249,7 +251,7 @@ I reject the null hypothesis, the word/colour incongruent does cause a greater t
 
 **Conclusion**
 
-The results match my expectations. 
+The results match my expectations.
 
 **In [5]:**
 
@@ -289,7 +291,7 @@ print(stroop)
 
 I believe it's a subconscious or habitual behaviour where commonly used words are glanced over and easily recognized in your mind and therefore, because the color and words match, it takes little effort to say the word/colour. However, when the word and colour are mismatched, we first think of the word and then need to correct ourselves to say the colour causing either errors or more time to provide the correct response.
 
-I imagine replacing letters with numbers in the experiment would yeild the same results. 
+I imagine replacing letters with numbers in the experiment would yeild the same results.
 
 Another similar task: being shown a list of words and asking the user to type (on a qwerty keyboard) commonly used words. First, use a list words with no spelling mistakes and then the same list of words with obviously misspelling or a number in the middle of the word. The reflects of knowing where the keys are positioned and the knoweledge of the correctly spelt word would allow cause the users to produce a fast time for correctly spelt words and a longer time to recognize that the word is spelt incorrectly and having to change their habitual behaviour, causing a lag and longer time to complet the word.
 

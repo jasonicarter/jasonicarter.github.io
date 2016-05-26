@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "OpenStreet Map Data Wrangling with MongoDB"
+share: y
+disqus: y
 ---
 
 ## Project Overview

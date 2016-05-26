@@ -3,8 +3,7 @@ title:            Jason I. Carter
 description:      Human Learning.
 url:              #http://jasonicarter.github.io # Site url, without a slash at the end.
 signoff:          Jason # Your name.
-disqus_shortname: # disqus comment thread for post header options. ( leave blank if unwanted. )
-facebook_appid:   # appid for like button, remove from /_includes/share.html if unwanted.
+disqus_shortname: jasoncarter # disqus comment thread for post header options. ( leave blank if unwanted. )
 google_analytics: # set tracking, remove from /javascripts/basic.js if unwanted.
 
 links:
