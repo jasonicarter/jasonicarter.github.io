@@ -1,4 +1,9 @@
-_site/
+_site
 .sass-cache
 .ruby-version
-_rmd/
+.Rproj.user
+_posts/*.csv
+_posts/*.md
+_cache
+.Rhistory
+.RData
