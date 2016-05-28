@@ -1,27 +1,37 @@
 ---
 layout: post
-title: "Looking for survivors with Titanic Data Analysis"
+title: "TitanicData"
 share: y
 disqus: y
 ---
+# Titanic Data Analysis
 
 ## Introduction
 **Purpose:** To performa data analysis on a sample Titanic dataset.
 
-This dataset contains demographics and passenger information from 891 of the 2224 passengers and crew on board the Titanic. You can view a description of this dataset on the Kaggle website, where the data was obtained (https://www.kaggle.com/c/titanic/data).
+This dataset contains demographics and passenger information from 891 of the
+2224 passengers and crew on board the Titanic. You can view a description of
+this dataset on the Kaggle website, where the data was obtained
+(https://www.kaggle.com/c/titanic/data).
 
 
 ## Questions
 
-"One of the reasons that the shipwreck led to such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others, such as women, children, and the upper-class." -  https://www.kaggle.com/c/titanic
+"One of the reasons that the shipwreck led to such loss of life was that there
+were not enough lifeboats for the passengers and crew. Although there was some
+element of luck involved in surviving the sinking, some groups of people were
+more likely to survive than others, such as women, children, and the upper-
+class." -  https://www.kaggle.com/c/titanic
 
 What factors made people more likely to survive?
 1. **Were social-economic standing a factor in survival rate?**
 2. **Did age, regardless of sex, determine your chances of survival?**
 3. **Did women and children have preference to lifeboats (survival)?**
-4. **Did women with children have a better survival rate vs women without children (adults 18+)?**
+4. **Did women with children have a better survival rate vs women without
+children (adults 18+)?**
 
-**Assumption:** We are going to assume that everyone who survived made it to a life boat and it wasn't by chance or luck.
+**Assumption:** We are going to assume that everyone who survived made it to a
+life boat and it wasn't by chance or luck.
 
 ## Data Wrangling
 
@@ -38,20 +48,31 @@ What factors made people more likely to survive?
 - **ticket:** Ticket Number
 - **fare:** Passenger Fare
 - **cabin:** Cabin
-- **embarked:** Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)
+- **embarked:** Port of Embarkation (C = Cherbourg; Q = Queenstown; S =
+Southampton)
 
 **Special Notes:**
-- Pclass is a proxy for socio-economic status (SES) 1st ~ Upper; 2nd ~ Middle; 3rd ~ Lower
-- Age is in Years; Fractional if Age less than One (1) If the Age is Estimated, it is in the form xx.5
+- Pclass is a proxy for socio-economic status (SES) 1st ~ Upper; 2nd ~ Middle;
+3rd ~ Lower
+- Age is in Years; Fractional if Age less than One (1) If the Age is Estimated,
+it is in the form xx.5
 
-With respect to the family relation variables (i.e. sibsp and parch) some relations were ignored.  The following are the definitions used for sibsp and parch.
+With respect to the family relation variables (i.e. sibsp and parch) some
+relations were ignored.  The following are the definitions used for sibsp and
+parch.
 
-- **Sibling:**  Brother, Sister, Stepbrother, or Stepsister of Passenger Aboard Titanic
-- **Spouse:**   Husband or Wife of Passenger Aboard Titanic (Mistresses and Fiances Ignored)
+- **Sibling:**  Brother, Sister, Stepbrother, or Stepsister of Passenger Aboard
+Titanic
+- **Spouse:**   Husband or Wife of Passenger Aboard Titanic (Mistresses and
+Fiances Ignored)
 - **Parent:**   Mother or Father of Passenger Aboard Titanic
-- **Child:**    Son, Daughter, Stepson, or Stepdaughter of Passenger Aboard Titanic
+- **Child:**    Son, Daughter, Stepson, or Stepdaughter of Passenger Aboard
+Titanic
 
-Other family relatives excluded from this study include cousins, nephews/nieces, aunts/uncles, and in-laws.  Some children travelled only with a nanny, therefore parch=0 for them.  As well, some travelled with very close friends or neighbors in a village, however, the definitions do not support such relations.
+Other family relatives excluded from this study include cousins, nephews/nieces,
+aunts/uncles, and in-laws.  Some children travelled only with a nanny, therefore
+parch=0 for them.  As well, some travelled with very close friends or neighbors
+in a village, however, the definitions do not support such relations.
 
 **In [308]:**
 
@@ -294,19 +315,31 @@ titanic_data.tail()
 
 
 
-**Note:** Some values for Age are NaN, while ticket and cabin values are alphanumeric and also missing values with NaN. Not a big deal but good to know. Based on current questions, will not require either Ticket or Cabin data.
+**Note:** Some values for Age are NaN, while ticket and cabin values are
+alphanumeric and also missing values with NaN. Not a big deal but good to know.
+Based on current questions, will not require either Ticket or Cabin data.
 
 **Additional potential questions from reading data and data description**
-- How did children with nannies fare in comparison to children with parents. Did the nanny "abandon" the child to save his/her own life?
- - I would need additional information to determine if a child was indeed only on board with a nanny. For example, a child could be on board with an adult sibling. This would make Parch (parent) = 0 but it would be incorrect to say the child had a nanny.
- - Need to review list for children with no siblings. These will be children with nannies; however, a child could have siblings and still have a nanny as well. Potential question **Q5**
-- Did cabin location play a part in the survival rate without the consideration of class
+- How did children with nannies fare in comparison to children with parents. Did
+the nanny "abandon" the child to save his/her own life?
+ - I would need additional information to determine if a child was indeed only
+on board with a nanny. For example, a child could be on board with an adult
+sibling. This would make Parch (parent) = 0 but it would be incorrect to say the
+child had a nanny.
+ - Need to review list for children with no siblings. These will be children
+with nannies; however, a child could have siblings and still have a nanny as
+well. Potential question **Q5**
+- Did cabin location play a part in the survival rate without the consideration
+of class
  - No data on where the cabins are actually located on the Titanic
  - External source of this data could probably be found
 
 ### Data Cleanup
 
-From the data description and questions to answer, I've determined that some dataset columns will not play a part in my analysis and these columns can therefore be removed. This will decluster the dataset and also help with processing performance of the dataset.
+From the data description and questions to answer, I've determined that some
+dataset columns will not play a part in my analysis and these columns can
+therefore be removed. This will decluster the dataset and also help with
+processing performance of the dataset.
 - PassengerId
 - Name
 - Ticket
@@ -660,7 +693,11 @@ titanic_data_cleaned.info()
     memory usage: 41.8+ KB
 
 
-Missing Age data will affect **Q2 - Did age, regardless of sex, determine your chances of survival?** But graphing and summations shouldn't be a problem since they will be treated as zero(0) value. However, 177 is roughly 20% of our 891 sample dataset which seems like a lot to discount. Also, this needs to be accounted for if reviewing descriptive stats such as mean age.
+Missing Age data will affect **Q2 - Did age, regardless of sex, determine your
+chances of survival?** But graphing and summations shouldn't be a problem since
+they will be treated as zero(0) value. However, 177 is roughly 20% of our 891
+sample dataset which seems like a lot to discount. Also, this needs to be
+accounted for if reviewing descriptive stats such as mean age.
 
 Should keep note of the proportions across male and female...
 
@@ -868,15 +905,18 @@ print 'Youngest to survive: {} \nYoungest to die: {} \nOldest to survive: {} \nO
 youngest_to_survive, youngest_to_die, oldest_to_survive, oldest_to_die)
 {% endhighlight %}
 
-    Youngest to survive: 0.42
-    Youngest to die: 1.0
-    Oldest to survive: 80.0
+    Youngest to survive: 0.42 
+    Youngest to die: 1.0 
+    Oldest to survive: 80.0 
     Oldest to die: 74.0
 
 
-Data description states that Age can be fractional - *Age is in Years; Fractional if Age less than One (1) If the Age is Estimated, it is in the form xx.5* - Therefore, 0.42 appears to be expected and normal data
+Data description states that Age can be fractional - *Age is in Years;
+Fractional if Age less than One (1) If the Age is Estimated, it is in the form
+xx.5* - Therefore, 0.42 appears to be expected and normal data
 
-**Note:** An interesting note is that all "new borns" survived. Potential **Q6** - At what age did children's survival rate match that of adults, if ever.
+**Note:** An interesting note is that all "new borns" survived. Potential **Q6**
+- At what age did children's survival rate match that of adults, if ever.
 
 Other notable stats
 - Oldest to survive: **80**
@@ -903,7 +943,7 @@ def survival_rate(pclass, sex):
     grouped_by_survived_sex = \
         titanic_data_cleaned.groupby(['Pclass','Survived','Sex']).size()[pclass,1,sex].astype('float')
     survived_sex_pct = (grouped_by_survived_sex / grouped_by_total * 100).round(2)
-
+    
     return survived_sex_pct
 {% endhighlight %}
 
@@ -925,7 +965,7 @@ print 'Class 3 - female survival rate: {}%'.format(survival_rate(3,'female'))
 print 'Class 3 - male survival rate: {}%'.format(survival_rate(3,'male'))
 
 # Graph - Grouped by class, survival and sex
-g = sns.factorplot(x="Sex", y="Survived", col="Pclass", data=titanic_data_cleaned,
+g = sns.factorplot(x="Sex", y="Survived", col="Pclass", data=titanic_data_cleaned, 
                    saturation=.5, kind="bar", ci=None, size=5, aspect=.8)
 
 # Fix up the labels
@@ -981,7 +1021,12 @@ for ax, title in zip(g.axes.flat, titles):
 ![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_28_2.png)
 
 
-Based on the raw numbers it would appear as though passengers in Class 3 had a similar survival rate as those from Class 1 with **119 and 136 passengers surviving respectively.** However, looking at the percentages of the overall passengers per class and the total numbers across each class, it can be assumed that **a passenger from Class 1 is about 2.5x times more likely to survive than a passenger in Class 3.**
+Based on the raw numbers it would appear as though passengers in Class 3 had a
+similar survival rate as those from Class 1 with **119 and 136 passengers
+surviving respectively.** However, looking at the percentages of the overall
+passengers per class and the total numbers across each class, it can be assumed
+that **a passenger from Class 1 is about 2.5x times more likely to survive than
+a passenger in Class 3.**
 
 Social-economic standing was a factor in survival rate of passengers.
 
@@ -1017,7 +1062,7 @@ Mean age of survivors {} \n\
 Mean age of non survivors {} \n\
 Oldest to survive {} \n\
 Oldest to not survive {}' \
-.format(number_survived, number_died, np.round(mean_age_survived),
+.format(number_survived, number_died, np.round(mean_age_survived), 
         np.round(mean_age_died), oldest_to_survive, oldest_to_die)
 
 # Graph - Age of passengers across sex of those who survived
@@ -1030,11 +1075,11 @@ g = sns.factorplot(x="Survived", y="Age", hue='Sex', data=titanic_data_age_clean
 {% endhighlight %}
 
     Number of men and woman with age missing are 53 and 124 respectively
-    Total number of survivors 290
-    Total number of non survivors 424
-    Mean age of survivors 28.0
-    Mean age of non survivors 31.0
-    Oldest to survive 80.0
+    Total number of survivors 290 
+    Total number of non survivors 424 
+    Mean age of survivors 28.0 
+    Mean age of non survivors 31.0 
+    Oldest to survive 80.0 
     Oldest to not survive 74.0
 
 
@@ -1050,25 +1095,30 @@ g = sns.factorplot(x="Survived", y="Age", hue='Sex', data=titanic_data_age_clean
 
 
 Based on the above boxplot and calculated data, it would appear that:
-- Regardless of sex and class, **age was not** a deciding factor in the passenger survival rate
-- Average age for those who survived and even those who did not survive were inline with eachother
+- Regardless of sex and class, **age was not** a deciding factor in the
+passenger survival rate
+- Average age for those who survived and even those who did not survive were
+inline with eachother
 
 ## Question 3
-Did women and children have preference to lifeboats and therefore survival (assuming there was no shortage of lifeboats)?
+Did women and children have preference to lifeboats and therefore survival
+(assuming there was no shortage of lifeboats)?
 
-**Assumption:** With "child" not classified in the data, I'll need to assume a cutoff point. Therefore, I'll be using today's standard of under 18 as those to be considered as a child vs adult
+**Assumption:** With "child" not classified in the data, I'll need to assume a
+cutoff point. Therefore, I'll be using today's standard of under 18 as those to
+be considered as a child vs adult
 
 **In [288]:**
 
 {% highlight python %}
 # Create Cateogry column and categorize people
 titanic_data_age_cleaned.loc[
-    ( (titanic_data_age_cleaned['Sex'] == 'female') &
+    ( (titanic_data_age_cleaned['Sex'] == 'female') & 
     (titanic_data_age_cleaned['Age'] >= 18) ),
     'Category'] = 'Woman'
 
 titanic_data_age_cleaned.loc[
-    ( (titanic_data_age_cleaned['Sex'] == 'male') &
+    ( (titanic_data_age_cleaned['Sex'] == 'male') & 
     (titanic_data_age_cleaned['Age'] >= 18) ),
     'Category'] = 'Man'
 
@@ -1106,10 +1156,18 @@ for ax, title in zip(g.axes.flat, titles):
 ![png]({{ site.baseurl }}/assets/posts/titanicdata_files/titanicdata_34_1.png)
 
 
-The data, and more so, the graphs tends to support the idea that "women and children first" possibly played a role in the survival of a number of people. It's a bit surprising that more children didn't survive but this could possibly be attributed to the mis-representation of what age is considered as the cut off for adults - i.e. if in the 1900's someone 15-17 were considered adults, they would not have been "saved" under the "women and children first" idea and would be made to fend for themselves. That would in turn, change the outcome of the above data and possible increase the number of children who survived.
+The data, and more so, the graphs tends to support the idea that "women and
+children first" possibly played a role in the survival of a number of people.
+It's a bit surprising that more children didn't survive but this could possibly
+be attributed to the mis-representation of what age is considered as the cut off
+for adults - i.e. if in the 1900's someone 15-17 were considered adults, they
+would not have been "saved" under the "women and children first" idea and would
+be made to fend for themselves. That would in turn, change the outcome of the
+above data and possible increase the number of children who survived.
 
 ## Question 4
-Did women with children have a better survival rate vs women without children (adults 18+)?
+Did women with children have a better survival rate vs women without children
+(adults 18+)?
 - "Women with children" is referring to parents only
 
 **In [289]:**
@@ -1123,7 +1181,7 @@ titanic_data_woman_parents = titanic_data_age_cleaned.loc[
 # Determine number of woman over 20 that are not parents
 titanic_data_woman_parents_maybe = titanic_data_age_cleaned.loc[
     (titanic_data_age_cleaned['Category'] == 'Woman') &
-    (titanic_data_age_cleaned['Parch'] > 0) &
+    (titanic_data_age_cleaned['Parch'] > 0) & 
     (titanic_data_age_cleaned['Age'] > 20)]
 {% endhighlight %}
 
@@ -1287,21 +1345,32 @@ titanic_data_woman_parents_maybe.head()
 
 
 
-After reviewing the data, and giving it a bit more thought, I noticed a issue which I didn't think of before i.e **A woman with Age: 23 and Parch: 2 could be onboard with her children OR onboard with her parents.** Based on the 'Parch' definition provided in the data description, *Parch - number of parents or children on board*, I don't believe it's possible to accurately determine women with children (parents) vs women with their parents onboard.
+After reviewing the data, and giving it a bit more thought, I noticed a issue
+which I didn't think of before i.e **A woman with Age: 23 and Parch: 2 could be
+onboard with her children OR onboard with her parents.** Based on the 'Parch'
+definition provided in the data description, *Parch - number of parents or
+children on board*, I don't believe it's possible to accurately determine women
+with children (parents) vs women with their parents onboard.
 
 ## Question 5
-How did children with nannies fare in comparison to children with parents. Did the nanny "abandon" children to save his/her own life?
- - Need to review list for children with no parents. These will be children with nannies as stated in the data description
- - Compare "normal" survival rate of children with parents against children with nannies
+How did children with nannies fare in comparison to children with parents. Did
+the nanny "abandon" children to save his/her own life?
+ - Need to review list for children with no parents. These will be children with
+nannies as stated in the data description
+ - Compare "normal" survival rate of children with parents against children with
+nannies
 
 Assumptions:
-1. If you're classified as a 'Child' (under 18) and have Parch > 0, then the value is associated to your Parents,  eventhough it is possible to be under 18 and also have children
-2. Classifying people as 'Child' represented by those under 18 years old is applying today's standards to the 1900 century
+1. If you're classified as a 'Child' (under 18) and have Parch > 0, then the
+value is associated to your Parents,  eventhough it is possible to be under 18
+and also have children
+2. Classifying people as 'Child' represented by those under 18 years old is
+applying today's standards to the 1900 century
 
 **In [292]:**
 
 {% highlight python %}
-# Separate out children with parents from those with nannies
+# Separate out children with parents from those with nannies 
 titanic_data_children_nannies = titanic_data_age_cleaned.loc[
     (titanic_data_age_cleaned['Category'] == 'Child') &
     (titanic_data_age_cleaned['Parch'] == 0)]
@@ -1327,7 +1396,7 @@ Children with nannies who survived: {}\n\
 Children with nannies who did not survive: {}\n\
 Percentage of children who survived: {}%\n\
 Average age of surviving children: {}'\
-.format(total_children_nannies, survived_children_nannies,
+.format(total_children_nannies, survived_children_nannies, 
         total_children_nannies-survived_children_nannies, pct_survived_nannies, survived_children_nannies_avg_age)
 
 # Verify counts (looked a bit too evenly divided)
@@ -1541,7 +1610,7 @@ Children with parents who survived: {}\n\
 Children with parents who did not survive: {}\n\
 Percentage of children who survived: {}%\n\
 Average age of surviving children: {}'\
-.format(total_children_parents, survived_children_parents,
+.format(total_children_parents, survived_children_parents, 
         total_children_parents-survived_children_parents, pct_survived_parents,survived_children_parents_avg_age)
 {% endhighlight %}
 
@@ -1552,7 +1621,11 @@ Average age of surviving children: {}'\
     Average age of surviving children: 7.0
 
 
-Based on the data analysis above, it would appear that the survival rate for children who were accompanied by parents vs those children accompanied by nannies was slighly higher for those with parents. The slight increase could be due to the average age of children with parents being younger, almost half, that of children with nannies.
+Based on the data analysis above, it would appear that the survival rate for
+children who were accompanied by parents vs those children accompanied by
+nannies was slighly higher for those with parents. The slight increase could be
+due to the average age of children with parents being younger, almost half, that
+of children with nannies.
 
 - Percentage of children with nannies who survived: **50.0%**
 - Percentage of children with parents who survived: **55.56%**
@@ -1561,15 +1634,26 @@ Based on the data analysis above, it would appear that the survival rate for chi
 
 ## Conclusion
 
-The results of the analysis, although tentative, would appear to indicate that class and sex, namely, being a female with upper social-economic standing (first class), would give one the best chance of survival when the tragedy occurred on the Titanic. Age did not seem to be a major factor. While being a man in third class, gave one the lowest chance of survival. Women and children, across all classes, tend to have a higher survival rate than men in genernal but by no means did being a child or woman guarentee survival. Although, overall, children accompanied by parents (or nannies) had the best survival rate at over 50%.
+The results of the analysis, although tentative, would appear to indicate that
+class and sex, namely, being a female with upper social-economic standing (first
+class), would give one the best chance of survival when the tragedy occurred on
+the Titanic. Age did not seem to be a major factor. While being a man in third
+class, gave one the lowest chance of survival. Women and children, across all
+classes, tend to have a higher survival rate than men in genernal but by no
+means did being a child or woman guarentee survival. Although, overall, children
+accompanied by parents (or nannies) had the best survival rate at over 50%.
 
 **Issues:**
-- A portion of men and women did not have Age data and were removed from calculations which could have skewed some numbers
-- The category of 'children' was assumed to be anyone under the age of 18, using today's North American standard for adulthood which was certainly not the case in the 1900s
+- A portion of men and women did not have Age data and were removed from
+calculations which could have skewed some numbers
+- The category of 'children' was assumed to be anyone under the age of 18, using
+today's North American standard for adulthood which was certainly not the case
+in the 1900s
 
 ## References
 
 - https://www.kaggle.com/c/titanic/data
 - http://nbviewer.jupyter.org/github/jvns/pandas-cookbook/tree/master/cookbook/
-- https://stanford.edu/~mwaskom/software/seaborn/generated/seaborn.factorplot.html#seaborn.factorplot
+- https://stanford.edu/~mwaskom/software/seaborn/generated/seaborn.factorplot.ht
+ml#seaborn.factorplot
 - http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3865739/

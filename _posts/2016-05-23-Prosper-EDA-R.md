@@ -1,15 +1,13 @@
 ---
 layout: post
 title:  "Prosper.com Exploratory Data Analysis with R"
-share: y
-disqus: y
 ---
 
 ## Introduction
 
 **What is Prosper**
 
-Prosper, or Prosper Marketplace, is a leader in the online peer-to-peer lending industry. Borrowers create profiles and listings (request loans) on [Prosper.com](https://prosper.com) investors either individuals or institutions, view the listing (borrower's loan request) and decide how much to lend the borrower towards the loan.
+Prosper, or Prosper Marketplace, is a leader in the online peer-to-peer lending industry. Borrowers create profiles and listings (request loans) on [Prosper.com](https://prosper.com) investors either individuals or institutions, view the listing (borrower's loan request) and decide how much to lend the borrower towards the loan. 
 
 Interest rates are typically lower for the borrower than going to a financial institution, such as a bank. And multiple investors can contribute to one borrower's loan request, limiting the overall risk impact of the borrower defaulting on the loan for any one investor and providing a higher yield.
 
@@ -19,7 +17,7 @@ I've personally never used peer-to-peer lending, as a borrower or investor, but 
 
 > Delinquent is the failure to accomplish what is required by law or duty, such as the failure to make a required payment or to perform a certain action.
 >
-> The term delinquent commonly refers to a situation where a borrower is late or overdue on a payment, such as income taxes, a mortgage, automobile loan or credit card account.
+> The term delinquent commonly refers to a situation where a borrower is late or overdue on a payment, such as income taxes, a mortgage, automobile loan or credit card account. 
 >
 > -- [Investopedia](http://www.investopedia.com/terms/d/delinquent.asp)
 
@@ -37,14 +35,14 @@ Dataset was last updated 03/11/2014
 The exploratory data analysis of Prosper data will follow a general 4 step process. This process will aim to walk through the entire thought process of analysis to final plots and reflection.
 
 1. Overview of the data
-2. Analysis
+2. Analysis 
     * Univariate analysis and plots
     * Bivariate analysis and plots
     * Multivariate analysis and plots
 3. Final plots and summary
 4. Reflection
 
-With 81 variables, it would be useful to indicate which ones you'll send time looking at.
+With 81 variables, it would be useful to indicate which ones you'll send time looking at. 
 Performed an initial review of all [variables definitions](https://docs.google.com/spreadsheets/d/1gDyi_L4UvIrLTEC6Wri5nbaMmkGmLQBk-Yx3z0XDEtI/edit) and determined a list of 15-ish variables which will be required either directly or indirectly for the exploration.
 
 #### Main Features of Interest
@@ -84,7 +82,7 @@ After reviewing the long list of variables, and thinking of all of the different
     - 19 - Vacation
     - 20 - Wedding Loans
 * **CreditScoreRangeLower**: The lower value representing the range of the borrower's credit score as provided by a consumer credit rating agency.
-* **CreditScoreRangeUpper**: The upper value representing the range of the borrower's credit score as provided by a consumer credit rating agency.
+* **CreditScoreRangeUpper**: The upper value representing the range of the borrower's credit score as provided by a consumer credit rating agency. 
 * **BankcardUtilization**: The percentage of available revolving credit that is utilized at the time the credit profile was pulled.
 * **IncomeRange**: The income range of the borrower at the time the listing was created.
 * **LoanOriginalAmount**: The origination amount of the loan.
@@ -98,7 +96,7 @@ Below are a list of supporting features. These features will not be the source o
 * **Occupation**: The Occupation selected by the Borrower at the time they created the listing.
 * **IsBorrowerHomeowner**: A Borrower will be classified as a homowner if they have a mortgage on their credit profile or provide documentation confirming they are a homeowner.
 * **BorrowerAPR**: The Borrower's Annual Percentage Rate (APR) for the loan.
-* **BorrowerRate**: The Borrower's interest rate for this loan.
+* **BorrowerRate**: The Borrower's interest rate for this loan. 
 * **Recommendations**: Number of recommendations the borrower had at the time the listing was created.
 * **TotalProsperLoans**: Number of Prosper loans the borrower at the time they created this listing. This value will be null if the borrower had no prior loans.
 * **DebtToIncomeRatio**: The debt to income ratio of the borrower at the time the credit profile was pulled.
@@ -108,9 +106,9 @@ Below are a list of supporting features. These features will not be the source o
 
 
 ## Exploratory Analysis
-### Univariate analysis
+### Univariate analysis 
 
-First, I want to review some basics values and descriptive statistics of the dataset. This is for two main reasons, 1) to verify some values put forward by Udacity, such as the 81 variables and 113,937 observations. And 2) to determine if there is anything "weird" or "stands out" about the data which I may want to dive deeper into. Although I have a general direction, i.e delinquencies and their correlations, if something interesting pops up from the descriptive stats, I'll take a peek in that direction as well.
+First, I want to review some basics values and descriptive statistics of the dataset. This is for two main reasons, 1) to verify some values put forward by Udacity, such as the 81 variables and 113,937 observations. And 2) to determine if there is anything "weird" or "stands out" about the data which I may want to dive deeper into. Although I have a general direction, i.e delinquencies and their correlations, if something interesting pops up from the descriptive stats, I'll take a peek in that direction as well. 
 
 Lets take a look at the dataset and verify the dimensions
 
@@ -159,19 +157,19 @@ Example of categorical values in "LoanStatus"
  [3] "Completed"              "Current"               
  [5] "Defaulted"              "FinalPaymentInProgress"
  [7] "Past Due (>120 days)"   "Past Due (1-15 days)"  
- [9] "Past Due (16-30 days)"  "Past Due (31-60 days)"
+ [9] "Past Due (16-30 days)"  "Past Due (31-60 days)" 
 [11] "Past Due (61-90 days)"  "Past Due (91-120 days)"
 ```
 
 There are a few challenges here. If I'm investigating delinquencies, I need to define a definition for it, and since the Prosper data has a few categories that could cover this, I need to do two things 1) learn the difference between Chargedoff and Defaulted and 2) assign a cutoff line for delinquents, i.e if someone is 1-15 days late on payment is that delinquent? What about 61-90 days late?
 
-Chargedoff:
+Chargedoff: 
 
 > A charge-off or chargeoff is the declaration by a creditor (usually a credit card account) that an amount of debt is unlikely to be collected. This occurs when a consumer becomes severely delinquent on a debt. Traditionally, creditors will make this declaration at the point of six months without payment. In the United States, Federal regulations require creditors to charge-off installment loans after 120 days of delinquency, while revolving credit accounts must be charged-off after 180 days
 >
 > -- [Wikipedia](https://en.wikipedia.org/wiki/Charge-off)
 
-Defaulted:
+Defaulted: 
 
 > In finance, default is failure to meet the legal obligations (or conditions) of a loan,[1] for example when a home buyer fails to make a mortgage payment, or when a corporation or government fails to pay a bond which has reached maturity.
 >
@@ -187,7 +185,7 @@ prosperloans$DelinquentBorrowers <- ifelse(
                                       prosperloans$LoanStatus == "Chargedoff" |
                                       prosperloans$LoanStatus == "Past Due (61-90 days)" |
                                       prosperloans$LoanStatus == "Past Due (91-120 days)" |
-                                      prosperloans$LoanStatus == "Past Due (>120 days)",
+                                      prosperloans$LoanStatus == "Past Due (>120 days)", 
                                       1, 0)
 ```
 
@@ -195,13 +193,13 @@ Before going too far, I was curious as to the creation date distribution of obse
 
 **Loan Creation Year Distribution**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Creation_Year_Distribution-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Creation_Year_Distribution-1.png)
 
 Inorder to help faciliate this more easily, I've decided to create a new variable which will capture the year segment of the loan creation date.
 
-From first glance, there is an obvious dip in borrowers, both delinquent and otherwise across 2008 and 2009. My first thoughts were connecting this fall in borrowers to the finanical crisis which occurred in late 2008. However, remember, this is loan "creation" date, and on a side note, is a good lesson in understanding the data and miss-communication in visuals.
+From first glance, there is an obvious dip in borrowers, both delinquent and otherwise across 2008 and 2009. My first thoughts were connecting this fall in borrowers to the finanical crisis which occurred in late 2008. However, remember, this is loan "creation" date, and on a side note, is a good lesson in understanding the data and miss-communication in visuals. 
 
-This data is not representing delinquent loans of 2008-9 but loans which went delinquent at some point in time that were created in 2007/8. I believe it can be assumed this is a lead up to the financial crisis, i.e. borrowers took out loans at a "normal" rate from 2006-2008 but potentially after the financial crisis in 2008, borrowers could no longer cover their monthly payments and loans created 2006-2008 were the most succeptable to defaults.
+This data is not representing delinquent loans of 2008-9 but loans which went delinquent at some point in time that were created in 2007/8. I believe it can be assumed this is a lead up to the financial crisis, i.e. borrowers took out loans at a "normal" rate from 2006-2008 but potentially after the financial crisis in 2008, borrowers could no longer cover their monthly payments and loans created 2006-2008 were the most succeptable to defaults. 
 
 This assumption also explains the dip in 2009 and gradual increase over the next few subsequent years, less borrowers and much fewer delinquents in comparison to the level of loans in good standing.
 
@@ -213,11 +211,11 @@ Time to further the analysis and investigate some other interesting features. Le
 
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-  12.00   36.00   36.00   40.83   36.00   60.00
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  12.00   36.00   36.00   40.83   36.00   60.00 
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Term_LoanStatus_Plots-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Term_LoanStatus_Plots-1.png)
 
 From the summary breakdown, the average term appears to be 36 months (3 yrs) with an original loan request being $8337, ranging from $1000 to $35,000. This seems to cover the full available range allowed by Prosper, although at the time of writting this analysis, Prosper now has a minimum loan limit of $2000. And what seems like a surprising amount, on average loans have 80 investors.
 
@@ -227,24 +225,24 @@ It's also very clear that the majority of borrowers choose a 36 month term, wher
 
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-   1000    4000    6500    8337   12000   35000
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1000    4000    6500    8337   12000   35000 
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Loan_and_Delinquents-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Loan_and_Delinquents-1.png)
 
-Summary data indicates mean and median quite far apart. This is visualized in the graph which is right skewed. As the spikes of borrowers at $10,000, $15,000 and $25,000 are pulling the mean higher. Although, it's not particularly surprising that borrowers gravitate to these "nice" numbers.
+Summary data indicates mean and median quite far apart. This is visualized in the graph which is right skewed. As the spikes of borrowers at $10,000, $15,000 and $25,000 are pulling the mean higher. Although, it's not particularly surprising that borrowers gravitate to these "nice" numbers. 
 
 
 ```r
 # Get details with reduced binwidth and added breaks
-g + geom_histogram(binwidth = 100) +
+g + geom_histogram(binwidth = 100) + 
     scale_x_continuous(
       limits = c(500, quantile(prosperloans$LoanOriginalAmount, 0.95)),
       breaks = c(0, 2500, 5000, 7500, 10000, 12500, 15000, 17500, 20000))
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Loan_and_Delinquents_with_Breaks-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Loan_and_Delinquents_with_Breaks-1.png)
 
 Taking a closer look at 95% of the data, specifically under $20,000, you can see multiple spikes at these "nice" numbers - 1000, 2000,...,8000, 9000, 10000 - dollars. Since most debt doesn't come in nice round numbers, we can assume borrowers are probably rounding up instead to requesting exact dollar values for their loans. For example, if a borrower is $4,678.86 dollars in debt, she is probably requesting a loan of $5,000.00. From the data provided, I don't believe there is in specific way to determine if this assumption is true, however, given that debt / money is a floating value with interest rate applied as floating value, it is quite unlikely that the majority of borrowers have debt divisible by 5.
 
@@ -253,26 +251,26 @@ Taking a closer look at 95% of the data, specifically under $20,000, you can see
 
 ```r
 # Plot out income range of all borrowers
-positions <- c("Not employed", "$0", "Not displayed",
+positions <- c("Not employed", "$0", "Not displayed", 
                 "$1-24,999", "$25,000-49,999", "$50,000-74,999",
                 "$75,000-99,999", "$100,000+")
 
-ggplot(prosperloans, aes(IncomeRange)) +
+ggplot(prosperloans, aes(IncomeRange)) + 
   scale_x_discrete(limits = positions) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   geom_bar()
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/IncomeRange_Distribution-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/IncomeRange_Distribution-1.png)
 
-Reviewing income range allows us to see the distribution of total borrowers and their income with a $25k dollar bin / range. This could shine light into the fincanical standing of borrowers which may be contributing factors to delinqunency.
+Reviewing income range allows us to see the distribution of total borrowers and their income with a $25k dollar bin / range. This could shine light into the fincanical standing of borrowers which may be contributing factors to delinqunency. 
 
 The distribution of borrowers across income range is somewhat normal if we consider that there are a number of users in the "Not Displayed" category, which was re-odered with the assumption that this category of borrowers do indeed have an income. Of note, it is quite unexpected to see any, let alone such a large number of borrowers with stated incomes of over $100,000.
 
 **Borrowers State**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/US_Map_of_Borrowers-1.png)![](/assets/posts/2016-05-23-ProsperLoanData/US_Map_of_Borrowers-2.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/US_Map_of_Borrowers-1.png)![](/assets/posts/2016-05-23-Prosper-EDA-R/US_Map_of_Borrowers-2.png)
 
 Borrowers state covers 52 states, this includes Alaska and Hawaii. Representation for California is skewing the graph, unable to distinguish smaller state counts and differences among states. Given California is the most populous state in the US, having a much higher count in borrowers is probably not a good indicator of a trend. To fix this and to better view any potential trends, a log10 transformation was applied to the y axis.
 
@@ -282,11 +280,11 @@ Two other unexpected results from the plot shows 1) there are no states with mor
 
 **Listing Category**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-1-1.png)![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-1-2.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-1-1.png)![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-1-2.png)
 
 The listing category values represent the purpose or reason why the borrower is requesting a loan. For example, if the value is "Auto", perhaps the borrower recently purchased an expensive car and needs $10,000 as a downpayment to lower her monthly bill.
 
-Based on the above plot, although "Debt Consolidation" is by far the most common reason borrowers require a loan, this is misleading. Debt consolidation removes the specificity of where the debt came from, i.e. Auto, Student Use, Taxes could have equally contributed to someone's debt but the "reason" the borrower is requesting a loan is for consolidation and therefore they flag "Debt Consolidation" as the purpose. One thing we can take away from the high volume of borrowers requesting debt consolidation loans, is that, many borrowers have debt from multiple sources.
+Based on the above plot, although "Debt Consolidation" is by far the most common reason borrowers require a loan, this is misleading. Debt consolidation removes the specificity of where the debt came from, i.e. Auto, Student Use, Taxes could have equally contributed to someone's debt but the "reason" the borrower is requesting a loan is for consolidation and therefore they flag "Debt Consolidation" as the purpose. One thing we can take away from the high volume of borrowers requesting debt consolidation loans, is that, many borrowers have debt from multiple sources. 
 
 
 ### Bivariate analysis
@@ -294,40 +292,40 @@ Continuing to look for trends in delinquencies, I will investigate possible expe
 
 **Listing Cateogry and Loan Amount**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-2-1.png)![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-2-2.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-2-1.png)![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-2-2.png)
 
 In the above two plots, I examine the loan category, loan amounts and borrowing rate. Debt consolidation as expected has the highest loan amounts across categories; however, unexpectedly "Baby and Adoption" category is also the highest (tied) loan amount across categories. It would be interesting to investigate the total number of borrowers across these two categories, one would expect debt consolidation to have a large distribution of borrowers.
 
 Also of note, the "Student Use" category loan amount it quite low. Given the well documented high levels of student debt, we can assume students didn't suddenly stop having debt but instead don't use Prosper to manage their debt or this category covers items other than student tutition such as lunches, dinners and books.
 
-The borrower's interest rate doesn't seem to have any particular surprises. The mean borrowing rate across all categories tend to vary between 0.15 and 0.25.
+The borrower's interest rate doesn't seem to have any particular surprises. The mean borrowing rate across all categories tend to vary between 0.15 and 0.25. 
 
 **Loan Term and Loan Amount**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-3-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-3-1.png)
 
 In this plot, I examin the three (3) term loans and borrower's loan amounts. Surprisingly the 60 month term has a mean value much higher than that of the 36 month term loan. This considering our previous plot where only approx. 25k borrowers used 60 month term loans in comparison to approx. 75k borrowers who used 36 month terms. This could be a point of further investigation particularly around delinquent accounts i.e. what percentage of 60 month terms go into delinquency in comparison to the other 2 term loan periods?
 
 **Loan and Bankcard Utilization**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/unnamed-chunk-4-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/unnamed-chunk-4-1.png)
 
-This plot was quite disappointly surprising as I was expecting a different/stronger relationship where loan amounts would rise as bankcard utilization lowered. Instead, we see a high volume cluster of loans under $10,000 with borrowers close to 100% bankcard utilization. I may revisit both of these variables, in a different light, later in the analysis but I would consider this correlation/trend/relationship discovery between these two variables a dead end.
+This plot was quite disappointly surprising as I was expecting a different/stronger relationship where loan amounts would rise as bankcard utilization lowered. Instead, we see a high volume cluster of loans under $10,000 with borrowers close to 100% bankcard utilization. I may revisit both of these variables, in a different light, later in the analysis but I would consider this correlation/trend/relationship discovery between these two variables a dead end. 
 
 **Debt-to-Income Ratio**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Income_and_Debt_Ratio-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Income_and_Debt_Ratio-1.png)
 
 In comparing debt-to-income ratio with a borrower's stated monthly income I was expecting to see a somewhat obvious, trend that delinquent borrowers would have a lower monthly income and a higher debt-to-income ratio. With overplotting in the scatterplot two additional techniques were used to more clearly reveal any trends or unexpected results.
 
-Borrwers with stated incomes over $20k and debt-to-income ratios over 1 were considered as outliers and removed from the plot.
+Borrwers with stated incomes over $20k and debt-to-income ratios over 1 were considered as outliers and removed from the plot. 
 
 The density contour lines show a high concentration of delinquent borrowers earn less than $2500 a month but have a low debt-to-income ratio of under 0.50 (or 50%). The plot also suggests a negative correlation between monthly income and debt-to-income ratio, i.e the more a borrower makes in monthly income the lower their debt-to-income ratio; However, this does not guarantee the loan will not go into delinquency.
 
 After further review from multiple online resources, it seems that a typical "good" debt-to-income ratio is under approx. 36%.
 
 **Interest Rate and Debt-to-Income Ratio**
-![](/assets/posts/2016-05-23-ProsperLoanData/Rate_and_Debt_Ratio-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Rate_and_Debt_Ratio-1.png)
 
 The relationship between a borrower's interest rate (BorrowerRate) and their debt ratio (DebtToIncomeRatio) was expected to be a positive correlation. I expected borrowers with high debt-to-income ratios would automatically receive higher interest rates on their loans. However, based on the above scatterplot, there seems to be no trend and a weak positive correlation between these two variables. Further investigation when plotting a correlation matrix will expose the details.
 
@@ -343,11 +341,11 @@ First, a correlation matrix will be used to calculated the coefficients in order
 ```r
 # Pearson correlation coefficients, using pairwise observations (default method)
 # Non-numeric columns automatically removed/ignored
-ggcorr(prosperloans, label = TRUE, label_size = 3,
+ggcorr(prosperloans, label = TRUE, label_size = 3, 
        hjust = 0.8, size = 2.5, color = "black", layout.exp = 2)
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Correlation_Matrix-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Correlation_Matrix-1.png)
 
 The correlation matrix revealed a few surprising things - I thought there would be a much stronger relationship between interest rate (BorrowerRate) and the credit score (CreditScoreRangeUpper/Lower). At a score of -0.5 it's the strongest correlation out of the selected variables. Also, the number of investors (Investors) and the borrower loan amount (LoanOriginalAmount) has a positive correlation of 0.4, which was somewhat expected as investors are only allowed to contribute a portion of a loan amount, i.e. no one investor can lend an entire loan amount.
 
@@ -355,7 +353,7 @@ Below, a few particularly interesting relationships will be investigated further
 
 **Credit Score and Borrowing Rate**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/CreditScore_and_BorrowerRate-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/CreditScore_and_BorrowerRate-1.png)
 
 We see an expected result here, where the trend is lower credit scores tend to have higher borrowing rates and higher credit scores obtaining a lower borrowing rate. Delinquent borrowers also tend to have lower credit scores, this could be in part due to their higher interest rates on loans hendering payments and causing delinquencies. If lower credit scores mean higher borrowing rates, and higher rates tend to cause delinquency, how does anyone with a low credit score get out of the cycle? What's the cause and effect? More investigation would be required to come to a conclusion. And also as expected, borrowers with higher credit scores and lower interest rate, tend to be in good standing with their loans.
 
@@ -364,33 +362,33 @@ We see an expected result here, where the trend is lower credit scores tend to h
 Summary: Delinquent Borrowers
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
-   19.0   619.0   679.0   661.5   719.0   879.0     174
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   19.0   619.0   679.0   661.5   719.0   879.0     174 
 ```
 
 Summary: Good Standing
 
 ```
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
-   19.0   679.0   719.0   712.4   739.0   899.0     417
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   19.0   679.0   719.0   712.4   739.0   899.0     417 
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/CreditScore_and_LoanAmount-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/CreditScore_and_LoanAmount-1.png)
 
-In the above comparisons, both scatterplots show a borrower's credit score against their loan amounts. Once again, this plot reveals some expected and unexpected results.
+In the above comparisons, both scatterplots show a borrower's credit score against their loan amounts. Once again, this plot reveals some expected and unexpected results. 
 
 The higher concentration of delinquent borrowers have lower credit scores, and they also tend to borrow less money, under $10,000. This maybe due to our previous plot which indicates, lower credit scores often tend to have higher interest rates on their loans - this was an expected result. What was a bit unexpected was the lower loan amount for borrowers with much higher credit scores. Based on previous plots, higher scores provide lower rates, which would tend to allow the borrower to gain access to a higher loan amount. And although the average loan amount for loans in good standing are higher, there is still a high concentration of loans under $20,000 and with credit scores over 700. One other "weird" result which I've ignored so far has to do with the credit score values, for example, some borrowers have score of 899 where credit scores range only between 300 and 850.
 
 **Loan Amount and Investors**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/LoanAmount_and_Investors-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/LoanAmount_and_Investors-1.png)
 
 Based on the correlation matrix, a positive relationship was expected. However, the non-linear, somewhat expotential curve of investors to loan amount was unexpected. This plot also shows a wide variance from the centred curve line of the corelation. Of note, Proper doesn't allow investors to contribute more than 10% of their net worth to any one loan. This could be the underlying factor contributing to the positive correlation between loan amount and number of investors.
 
 
 **Bankcard Utilization and Borrowing Rate**
 
-![](/assets/posts/2016-05-23-ProsperLoanData/BorrowerRate_and_BankcardUtilization-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/BorrowerRate_and_BankcardUtilization-1.png)
 
 Revisiting bankcard utilization, this time with borrowing rate, it was unexpected to see bankcard utilization over 1 or 100% and how the typical calculation happens doesn't seem to allow a utilization of over 100%. Another unexpected result, was the large number of borrowers with high bankcard utilization who were in good standing. And although there are a larger number of borrowers in good standing, in comparison to delinquent borrowers, good standing borrowers have a utilization which is more evenly spread through 0 to 100%.
 
@@ -403,13 +401,13 @@ Revisiting bankcard utilization, this time with borrowing rate, it was unexpecte
 [7] "Not displayed"  "Not employed"  
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/IncomeRange_LoanAmounts_across_Years-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/IncomeRange_LoanAmounts_across_Years-1.png)
 
 These were quite interesting plots, as all income ranges display the same curve (distribution across 2007 - 2014). Again, this could be a result of loans, investors and the financial crisis as mentioned previously. Also, the cateogry "not displayed" is missing data after 2008, and one can assume that possibly this category was removed as an option for users after 2008, forcing users to provide more transparency - which also could have been a side effect of the crisis. However, only in 2007 is there data for any of the other categories, which would imply that during 2005 and 2006, none of the income range categories existed (or the data was lost/not recorded).
 
 Also of note, borrowers with $100,000+ consistently have a wider spread of loan amounts over the years. And borrowers within the categories of "$0" and "not employed" should probably be lumped together to provide more accurate information or at least, more manageable information - since by definition, you cannot be employed with $0 income but you can be, not employed, and still have income (e.g. retirees).
 
-![](/assets/posts/2016-05-23-ProsperLoanData/IncomeRange_LoanAmounts_Years_Delinquency-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/IncomeRange_LoanAmounts_Years_Delinquency-1.png)
 
 On a deeper dive of the same plot, loan amount by year across income range, I investigate any possible trends around delinquency and spot some unexpected results. Particularly with borrowers whose income range is over $100,000. Delinquency for this income range tends to tread higher then good standing accounts, especially with loans created prior to 2008. These delinquent loans tend to have a higher min, max and mean dollar amount. This larger delinquency gap can also be seen with borrowers of the $0 income range.
 
@@ -417,7 +415,7 @@ On a deeper dive of the same plot, loan amount by year across income range, I in
 
 ### Plot 1
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Final_Plot_1-1.png)![](/assets/posts/2016-05-23-ProsperLoanData/Final_Plot_1-2.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Final_Plot_1-1.png)![](/assets/posts/2016-05-23-Prosper-EDA-R/Final_Plot_1-2.png)
 
 In the above plots we examine the different categories of loans (reason borrower's need the loan) and the total number of borrowers for that type of loan.
 
@@ -429,11 +427,11 @@ When reviewing the plot under log10 y axis, the low delinquency of boat loans an
 
 ### Plot 2
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Final_Plot_2-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Final_Plot_2-1.png)
 
 In the above plot we examine the stated monthly incomes of borrowers and their debt-to-income ratio. This data was then visually categorized by delinquent and good standing loans.
 
-To mitigate overplotting, density contour and other layers were applied to the plot. These techniques help to reveal trends and unexpected results.
+To mitigate overplotting, density contour and other layers were applied to the plot. These techniques help to reveal trends and unexpected results. 
 
 The density contour lines show a high concentration of delinquent borrowers earn less than $2500 a month but have a relatively low debt-to-income ratio of under 0.50 (or 50%). The plot also suggests a negative correlation between monthly income and debt-to-income ratio, i.e the more a borrower makes in monthly income the lower their debt-to-income ratio; However, this does not guarantee the borrower will not go into delinquency.
 
@@ -442,12 +440,12 @@ The density contour lines show a high concentration of delinquent borrowers earn
 Income Range:
 
 ```
-[1] "Not employed"   "$0"             "Not displayed"
+[1] "Not employed"   "$0"             "Not displayed" 
 [4] "$1-24,999"      "$25,000-49,999" "$50,000-74,999"
 [7] "$75,000-99,999" "$100,000+"     
 ```
 
-![](/assets/posts/2016-05-23-ProsperLoanData/Final_Plot_3-1.png)
+![](/assets/posts/2016-05-23-Prosper-EDA-R/Final_Plot_3-1.png)
 
 In the above plot we examine the borrower loan amount by their income range across loan creation year. The data was then separated and visualized by borrowers in good standing and delinquent.
 
@@ -496,7 +494,7 @@ locale:
 [1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
 
 attached base packages:
-[1] methods   stats     graphics  grDevices utils     datasets
+[1] methods   stats     graphics  grDevices utils     datasets 
 [7] base     
 
 other attached packages:
@@ -513,3 +511,4 @@ loaded via a namespace (and not attached):
 [19] codetools_0.2-14 evaluate_0.9     labeling_0.3    
 [22] stringi_1.0-1    scales_0.4.0     reshape_0.8.5   
 ```
+
