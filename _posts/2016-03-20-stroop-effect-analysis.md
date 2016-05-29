@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Stroop Effect"
+title: "Stroop Effect: Testing a Perceptual Phenomenon"
 share: y
 disqus: y
 ---

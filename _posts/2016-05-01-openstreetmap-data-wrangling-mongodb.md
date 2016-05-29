@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OpenStreetMap_Data_MongoDB"
+title: "OpenStreetMap Data Wrangling with MongoDB"
 share: y
 disqus: y
 ---
@@ -263,7 +263,7 @@ def process_map(filename):
 def test():
     users = process_map('src/sample.osm')
     print 'Number of unique contributors:', len(users)
-    
+
 # test()
 {% endhighlight %}
 

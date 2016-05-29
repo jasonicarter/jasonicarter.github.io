@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "TitanicData"
+title: "Looking for Survivors with Titanic Data Analysis"
 share: y
 disqus: y
 ---
@@ -905,9 +905,9 @@ print 'Youngest to survive: {} \nYoungest to die: {} \nOldest to survive: {} \nO
 youngest_to_survive, youngest_to_die, oldest_to_survive, oldest_to_die)
 {% endhighlight %}
 
-    Youngest to survive: 0.42 
-    Youngest to die: 1.0 
-    Oldest to survive: 80.0 
+    Youngest to survive: 0.42
+    Youngest to die: 1.0
+    Oldest to survive: 80.0
     Oldest to die: 74.0
 
 
@@ -943,7 +943,7 @@ def survival_rate(pclass, sex):
     grouped_by_survived_sex = \
         titanic_data_cleaned.groupby(['Pclass','Survived','Sex']).size()[pclass,1,sex].astype('float')
     survived_sex_pct = (grouped_by_survived_sex / grouped_by_total * 100).round(2)
-    
+
     return survived_sex_pct
 {% endhighlight %}
 
@@ -965,7 +965,7 @@ print 'Class 3 - female survival rate: {}%'.format(survival_rate(3,'female'))
 print 'Class 3 - male survival rate: {}%'.format(survival_rate(3,'male'))
 
 # Graph - Grouped by class, survival and sex
-g = sns.factorplot(x="Sex", y="Survived", col="Pclass", data=titanic_data_cleaned, 
+g = sns.factorplot(x="Sex", y="Survived", col="Pclass", data=titanic_data_cleaned,
                    saturation=.5, kind="bar", ci=None, size=5, aspect=.8)
 
 # Fix up the labels
@@ -1062,7 +1062,7 @@ Mean age of survivors {} \n\
 Mean age of non survivors {} \n\
 Oldest to survive {} \n\
 Oldest to not survive {}' \
-.format(number_survived, number_died, np.round(mean_age_survived), 
+.format(number_survived, number_died, np.round(mean_age_survived),
         np.round(mean_age_died), oldest_to_survive, oldest_to_die)
 
 # Graph - Age of passengers across sex of those who survived
@@ -1075,11 +1075,11 @@ g = sns.factorplot(x="Survived", y="Age", hue='Sex', data=titanic_data_age_clean
 {% endhighlight %}
 
     Number of men and woman with age missing are 53 and 124 respectively
-    Total number of survivors 290 
-    Total number of non survivors 424 
-    Mean age of survivors 28.0 
-    Mean age of non survivors 31.0 
-    Oldest to survive 80.0 
+    Total number of survivors 290
+    Total number of non survivors 424
+    Mean age of survivors 28.0
+    Mean age of non survivors 31.0
+    Oldest to survive 80.0
     Oldest to not survive 74.0
 
 
@@ -1113,12 +1113,12 @@ be considered as a child vs adult
 {% highlight python %}
 # Create Cateogry column and categorize people
 titanic_data_age_cleaned.loc[
-    ( (titanic_data_age_cleaned['Sex'] == 'female') & 
+    ( (titanic_data_age_cleaned['Sex'] == 'female') &
     (titanic_data_age_cleaned['Age'] >= 18) ),
     'Category'] = 'Woman'
 
 titanic_data_age_cleaned.loc[
-    ( (titanic_data_age_cleaned['Sex'] == 'male') & 
+    ( (titanic_data_age_cleaned['Sex'] == 'male') &
     (titanic_data_age_cleaned['Age'] >= 18) ),
     'Category'] = 'Man'
 
@@ -1181,7 +1181,7 @@ titanic_data_woman_parents = titanic_data_age_cleaned.loc[
 # Determine number of woman over 20 that are not parents
 titanic_data_woman_parents_maybe = titanic_data_age_cleaned.loc[
     (titanic_data_age_cleaned['Category'] == 'Woman') &
-    (titanic_data_age_cleaned['Parch'] > 0) & 
+    (titanic_data_age_cleaned['Parch'] > 0) &
     (titanic_data_age_cleaned['Age'] > 20)]
 {% endhighlight %}
 
@@ -1370,7 +1370,7 @@ applying today's standards to the 1900 century
 **In [292]:**
 
 {% highlight python %}
-# Separate out children with parents from those with nannies 
+# Separate out children with parents from those with nannies
 titanic_data_children_nannies = titanic_data_age_cleaned.loc[
     (titanic_data_age_cleaned['Category'] == 'Child') &
     (titanic_data_age_cleaned['Parch'] == 0)]
@@ -1396,7 +1396,7 @@ Children with nannies who survived: {}\n\
 Children with nannies who did not survive: {}\n\
 Percentage of children who survived: {}%\n\
 Average age of surviving children: {}'\
-.format(total_children_nannies, survived_children_nannies, 
+.format(total_children_nannies, survived_children_nannies,
         total_children_nannies-survived_children_nannies, pct_survived_nannies, survived_children_nannies_avg_age)
 
 # Verify counts (looked a bit too evenly divided)
@@ -1610,7 +1610,7 @@ Children with parents who survived: {}\n\
 Children with parents who did not survive: {}\n\
 Percentage of children who survived: {}%\n\
 Average age of surviving children: {}'\
-.format(total_children_parents, survived_children_parents, 
+.format(total_children_parents, survived_children_parents,
         total_children_parents-survived_children_parents, pct_survived_parents,survived_children_parents_avg_age)
 {% endhighlight %}
 
