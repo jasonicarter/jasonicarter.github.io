@@ -4,7 +4,6 @@ title: "Looking for Survivors with Titanic Data Analysis"
 share: y
 disqus: y
 ---
-# Titanic Data Analysis
 
 ## Introduction
 **Purpose:** To performa data analysis on a sample Titanic dataset.

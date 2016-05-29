@@ -4,7 +4,6 @@ title: "Stroop Effect: Testing a Perceptual Phenomenon"
 share: y
 disqus: y
 ---
-# P1 - Stroop Effect Analysis
 
 In a Stroop task, participants are presented with a list of words, with each
 word displayed in a color of ink. The participant’s task is to say out loud the
