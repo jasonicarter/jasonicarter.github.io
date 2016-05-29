@@ -4,7 +4,6 @@ title: "OpenStreetMap Data Wrangling with MongoDB"
 share: y
 disqus: y
 ---
-# OpenStreetMap Data Wrangling with MongoDB
 
 ## Project Overview
 To choose any area of the world in https://www.openstreetmap.org and use data
