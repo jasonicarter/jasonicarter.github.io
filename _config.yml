@@ -1,7 +1,7 @@
 # Site settings
 title:            Jason I. Carter
 description:      Human Learning.
-url:              http://jasonicarter.github.io # Site url, without a slash at the end.
+url:              # Site url, without a slash at the end.
 signoff:          Jason # Your name.
 disqus_shortname: jasoncarter # disqus comment thread for post header options. ( leave blank if unwanted. )
 google_analytics: UA-43596308-5 # set tracking, remove from /javascripts/basic.js if unwanted.

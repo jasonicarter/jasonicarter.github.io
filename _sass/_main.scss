@@ -3,7 +3,7 @@
 // It does not contain the YAML front matter and has no corresponding output file in the built site.
 @import "bourbon/bourbon";
 
-$background: #f9f9f9;
+$background: white;
 
 h1, h2, h3, h4, h5, strong, b { font-weight: 600; }
 
@@ -19,7 +19,7 @@ body {
   padding: 0; margin: 0;
 }
 img { border: none; }
-#go-back-home { margin: 40px 0 0; &:hover { background-image: none; } }
+#go-back-home { &:hover { background-image: none; } }
 .capitalize { text-transform: capitalize; }
 .upcase { text-transform: uppercase; }
 .downcase { text-transform: lowercase; }
@@ -57,7 +57,7 @@ footer {
   @include box-sizing(border-box);
   width: 100%;
   max-width: 660px;
-  margin: 40px auto 20px;
+  margin: 0px auto 20px;
   border-radius: 7px;
   position: relative;
   .block {
@@ -65,7 +65,7 @@ footer {
     &:last-child { border-bottom: 0; }
     border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
-    padding: 30px 40px 24px;
+    padding: 0px 40px 24px;
     text-align: center;
     a.main {
       @include inline-block;
