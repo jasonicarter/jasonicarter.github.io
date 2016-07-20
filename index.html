@@ -4,7 +4,7 @@ layout: index
 
 <p>THOUGHTS</p>
 <ul class="posts">
-  {% for post in site.posts limit: 5%}
+  {% for post in site.posts limit: 7 %}
   <li>
     <small class="datetime muted" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
     <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
