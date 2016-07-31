@@ -63,9 +63,9 @@ footer {
   .block {
     &:first-child, & + .block { border-top: 0; }
     &:last-child { border-bottom: 0; }
-    border-top: 1px solid #efefef;
+//    border-top: 1px solid #efefef;
     border-bottom: 1px solid #efefef;
-    padding: 0px 40px 24px;
+    padding: 24px 40px 24px;
     text-align: center;
     a.main {
       @include inline-block;
