@@ -17,11 +17,17 @@ body {
 }
 
 h1, h2 {
-    text-align: center   
+    text-align: center
 }
 
 h1 {margin-bottom: 0}
 h2 {margin-top: 0}
+
+#filter {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 footer {
     margin-left: auto;
@@ -36,15 +42,14 @@ ul { list-style: none; }
 a { text-decoration: none; }
 
 .message {
-    width: 600px;  
+    width: 600px;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
 }
 
-.message p {
-    font-size: 1.25em;   
-}
+.message p { font-size: 1.25em; }
+.instructions p { text-align: center; }
 
 .axis path,.axis line {
     fill: none;
@@ -52,7 +57,7 @@ a { text-decoration: none; }
     shape-rendering: crispEdges;
 }
 
-.axis text {font-size: 8px}
+.axis text, .neighbourhood_info, .housing_info {font-size: 8px}
 
 .tick text{fill: black;}
 
@@ -86,7 +91,6 @@ text.value{
 
 .map_neighbourhood:hover {
   fill: #636363;
-  cursor: pointer;
 }
 
 .map_neighbourhood_name {
