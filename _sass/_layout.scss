@@ -141,6 +141,10 @@ font-size: 36px;
     }
 }
 .post-content {
+h2, h3, h4 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 h2 {
 font-size: 42px;
 @include media-query($on-laptop) {
@@ -159,6 +163,9 @@ font-size: 20px;
 font-size: 18px;
         }
     }
+p {
+margin-top: 20px;
+}
 }
 .post-meta {
 font-size: $small-font-size;
