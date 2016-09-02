@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<ul class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <h2><a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+      </li>
+    {% endfor %}
+</ul>
