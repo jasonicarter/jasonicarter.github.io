@@ -8,7 +8,7 @@ permalink: /about/
 
 Dammit Jim, I'm a Software Engineer not a ________.
 
-I'm Jason Carter, a sometimes language polyglot on the computer, a has-been volunteer computer teacher and a wanna-be expert in something. Oh, and I believe in <a href="https://en.wikipedia.org/wiki/Fail-fast" target="_blank"> failing fast</a> as defined in wikipedia. In my personal and professional life, I want to be:
+I'm Jason Carter, a sometimes language polyglot on the computer, a has-been volunteer computer teacher and a wanna-be expert in something. Oh, and I believe in <a href="https://en.wikipedia.org/wiki/Fail-fast" target="_blank"> failing fast</a> as defined on wikipedia. And in my personal and professional life, I want to be:
 
 <blockquote>
 A [...] system that is designed to halt as well as report the error on failure [and be less] likely to erroneously perform an irreversible or costly operation.
