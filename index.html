@@ -1,14 +1,11 @@
 ---
-layout: index
+layout: default
 ---
 
-<p>THOUGHTS</p>
-<ul class="posts">
-  {% for post in site.posts limit: 7 %}
-  <li>
-    <small class="datetime muted" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
-    <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-  </li>
-  {% endfor %}
-  <p><a href="{{ site.url }}/posts" class="muted">my other thoughts... </a></p>
+<ul class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <h2><a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
+      </li>
+    {% endfor %}
 </ul>
