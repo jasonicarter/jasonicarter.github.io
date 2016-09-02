@@ -1,9 +1,0 @@
-_site
-.sass-cache
-.ruby-version
-.Rproj.user
-_posts/*.csv
-_posts/*.rmd
-_cache
-.Rhistory
-.RData
