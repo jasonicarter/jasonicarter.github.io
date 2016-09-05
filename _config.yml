@@ -12,7 +12,7 @@ linkedin_username: jasoniancarter
 # Build settings
 markdown: kramdown
 
-highlighter: pygments
+highlighter: rouge
 
 exclude:
   - _posts/*.Rmd
