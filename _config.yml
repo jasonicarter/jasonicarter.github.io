@@ -14,6 +14,8 @@ markdown: kramdown
 
 highlighter: rouge
 
+permalink: /:title
+
 exclude:
   - _posts/*.Rmd
   - build.R
