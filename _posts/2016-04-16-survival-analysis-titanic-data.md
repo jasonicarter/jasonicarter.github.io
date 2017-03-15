@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Looking for Survivors with Titanic Data Analysis"
-share: y
-disqus: y
+date: 2016-04-16
+tags: [data analytics]
+comments: true
+share: true
 ---
 
 ## Introduction
