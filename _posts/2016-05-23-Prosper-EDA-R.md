@@ -98,7 +98,7 @@ Below are a list of supporting features. These features will not be the source o
 
 * **ListingCreationDate**: The date the listing was created.
 * **Occupation**: The Occupation selected by the Borrower at the time they created the listing.
-* **IsBorrowerHomeowner**: A Borrower will be classified as a homowner if they have a mortgage on their credit profile or provide documentation confirming they are a homeowner.
+* **IsBorrowerHomeowner**: A Borrower will be classified as a homeowner if they have a mortgage on their credit profile or provide documentation confirming they are a homeowner.
 * **BorrowerAPR**: The Borrower's Annual Percentage Rate (APR) for the loan.
 * **BorrowerRate**: The Borrower's interest rate for this loan.
 * **Recommendations**: Number of recommendations the borrower had at the time the listing was created.
