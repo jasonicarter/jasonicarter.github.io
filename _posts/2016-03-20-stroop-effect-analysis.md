@@ -1,8 +1,10 @@
 ---
-layout: post
 title: "Stroop Effect: Testing a Perceptual Phenomenon"
-share: y
-disqus: y
+layout: post
+date: 2016-03-20
+tags: [data analytics]
+comments: true
+share: true
 ---
 
 In a Stroop task, participants are presented with a list of words, with each

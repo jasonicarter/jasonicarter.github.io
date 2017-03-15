@@ -1,25 +1,83 @@
-# Site settings
-title: Jason I. Carter
-email: you@example.com
-description: > # this means to ignore newlines until "baseurl:"
-  A simple, whitespace, helvetica based portfolio theme.
-baseurl:  # the subpath of your site, e.g. /blog/
-url:  # the base hostname & protocol for your site
-twitter_username: jasonicarter
-github_username:  jasonicarter
-linkedin_username: jasoniancarter
+# Basic
+name:               "That's Deep"
 
-# Build settings
-markdown: kramdown
+author:
+  # facebook:         your-id
+  twitter:          jasonicarter
+  github:           jasonicarter
+  linkedin:         jasoniancarter
+  # medium:           your-id
+  # tumblr:           your-id
+  # email:            your-id@your-email.com
 
-highlighter: rouge
+copyright:
+  year:             2017
+  name:             jasonicarter
 
-permalink: /:title
+# Google-analytics
+google-analytics:
+  id:               "UA-43596308-5"
+
+# Disqus
+disqus:
+  id:               "jasonicarter-github-io"
+
+# URL
+url:                "https://jasonicarter.github.io" # the base hostname & protocol for your site
+# url:                "http://localhost:4000" # use this url when you develop
+# baseurl:            "/Kiko-plus" # the subpath of your site, e.g. /blog
+
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:           America/New_York
+permalink:          /:title/
+
+# Pagination
+paginate:           10
+paginate_path:      /page:num/
+
+# Markdown
+markdown:           kramdown
+kramdown:
+  input:            GFM
+
+# Navigation
+nav:
+  - name:           "About"
+    url:            "/about"
+  # - name:           "Archive"
+  #   url:            "/archive"
+  - name:           "Tags"
+    url:            "/tags"
+  - name:           "Github"
+    url:            "https://github.com/jasonicarter"
+
+# Sass
+sass:
+  sass_dir:         _sass
+  style:            :compressed
+
+# Scopes
+defaults:
+  -
+    scope:
+      path:         ""
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      path:         ""
+      type:         "posts"
+    values:
+      layout:       "post"
+
+# jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
+gems:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-admin
 
 exclude:
   - _posts/*.Rmd
   - build.R
-
-# Pagination
-paginate: 15
-paginate_path: "/blog/page:num/"
