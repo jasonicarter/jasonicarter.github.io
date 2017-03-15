@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "OpenStreetMap Data Wrangling with MongoDB"
-share: y
-disqus: y
+date: 2016-05-01
+tags: [data analytics, map data, MongoDB]
+comments: true
+share: true
 ---
 
 ## Project Overview

@@ -1,12 +1,16 @@
 ---
 layout: post
 title:  "Toronto Community Housing: A Visualization of Misconception"
+date: 2016-07-29
+tags: [data analytics, Toronto, visualization]
+comments: true
+share: true
 ---
 
 ## Summary
 This visualization shows the misconception of safety in Toronto neighbourhoods as a correlation with community housing. The 20 top community housing neighborhoods, ranked by population ratio, are not leaders in neighbourhood crimes. That is, there is no obvious relationship between the type or rate of crime in a neighbourhood and that of the neighbourhood's community housing population ratio.
 
-[A Visualization of Toronto Community Housing and Neighbourhood Crime]({{ site.baseurl }}/toronto_neighbourhood_crime)
+[A Visualization of Toronto Community Housing and Neighbourhood Crime]({{ site.baseurl }}/projects/toronto_neighbourhood_crime)
 
 ## Design
 **Representing the data**
