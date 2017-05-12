@@ -1,7 +1,6 @@
 ---
 layout: post
 title: My 3 Month Deep Learning Career Pivot
-description: "A self-study guide to becoming a deep learning non-expert."
 tags:
   - deep learning
   - machine learning
