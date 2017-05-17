@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My Deep Learning Reading (and watching) List"
-date: 2017-03-17
+date: 2017-05-17
 tags: [MOOC, Deep Learning, Machine Learning, fast.ai]
 comments: true
 share: true
