@@ -7,7 +7,7 @@ comments: true
 share: true
 ---
 ## Backstory
-If you're here without context, let me bring you up to speed. About two months ago, I left my job to take time off and
+If you're here without context, let me bring you up to speed. About one months ago, I left my job to take time off and
 pursue a learning path into the emerging field of Deep Learning. To that end, I put together a self-study plan which you can read 
 more about on [Medium](https://medium.com/towards-data-science/my-3-month-deep-learning-career-pivot-af94cd8d6a31) 
 and an updated/revised version on [LinkedIn]().
