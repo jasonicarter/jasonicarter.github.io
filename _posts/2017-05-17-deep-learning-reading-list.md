@@ -10,7 +10,7 @@ share: true
 If you're here without context, let me bring you up to speed. About one months ago, I left my job to take time off and
 pursue a learning path into the emerging field of Deep Learning. To that end, I put together a self-study plan which you can read 
 more about on [Medium](https://medium.com/towards-data-science/my-3-month-deep-learning-career-pivot-af94cd8d6a31) 
-and an updated/revised version on [LinkedIn]().
+and an updated/revised version on [LinkedIn](https://www.linkedin.com/pulse/self-study-guide-becoming-deep-learning-non-expert-jason-carter).
 
 My study plan covered a few items but it was mainly the [Fast.ai MOOC](http://course.fast.ai) and the benchmark project 
 which contributes to my daily reading and watching material. That material is listed below and will be updated 
