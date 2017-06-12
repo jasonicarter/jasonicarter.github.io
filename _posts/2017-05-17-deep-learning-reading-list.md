@@ -7,22 +7,21 @@ comments: true
 share: true
 ---
 ## Backstory
-If you're here without context, let me bring you up to speed. About one months ago, I left my job to take time off and
-pursue a learning path into the emerging field of Deep Learning. To that end, I put together a self-study plan which you can read 
+*(Last Updated: June, 2017)* If you're here without context, let me bring you up to speed. Early 2017 I quit my job in order to study full time to pursue a learning path into the emerging field of Deep Learning. To that end, I put together a self-study plan which you can read 
 more about on [Medium](https://medium.com/towards-data-science/my-3-month-deep-learning-career-pivot-af94cd8d6a31) 
 and an updated/revised version on [LinkedIn](https://www.linkedin.com/pulse/self-study-guide-becoming-deep-learning-non-expert-jason-carter).
 
-My study plan covered a few items but it was mainly the [Fast.ai MOOC](http://course.fast.ai) and the benchmark project 
-which contributes to my daily reading and watching material. That material is listed below and will be updated 
-as I continue my progress into the field of deep learning.
+My study plan covered a few large "pieces" of study material, mainly the [Fast.ai MOOC](http://course.fast.ai) and a benchmark project. However, since starting, I've expanded my studies for a number of reasons which I'll leave for another blog article. The material I've covered so far is listed below and will be updated as I continue my progress into the field of deep learning.
 
 If you're starting your journey and looking for examples of a study path and material to use, hopefully this will help.
 
 ## My Deep Learning List
+*(The below list does not represent articles and blogs I've "glanced over", only those I've spend considerable amount of time reading
+and attempting to understand.)*
 
 **Course**
-- [Deep Learning - Part 1: MOOC version](http://course.fast.ai) from the company [Fast.ai](http://fast.ai)
-- [University of San Francisco, Data Institute: Deep Learning - Part 1](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one)
+- [Deep Learning - Part 1: MOOC version](http://course.fast.ai) and [USF, Data Institute: Deep Learning - Part 1](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) from the company [Fast.ai](http://fast.ai)
+- [Data Scientist with Python track - DataCamp](https://www.datacamp.com/tracks/data-scientist-with-python)
 
 **Videos**
 - [Deep Learning Demystified](https://youtu.be/Q9Z20HCPnww)
@@ -43,8 +42,5 @@ If you're starting your journey and looking for examples of a study path and mat
 - [How to trick a neural network into thinking a panda is a vulture](https://codewords.recurse.com/issues/five/why-do-neural-networks-think-a-panda-is-a-vulture)
 - [Attacking Machine Learning with Adversarial Examples](https://blog.openai.com/adversarial-example-research)
 - [GAN by Example using Keras on Tensorflow Backend](https://medium.com/towards-data-science/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0)
-
-NB: The above does not represent articles and blogs I've "glanced over", only those I've spend considerable amount of time reading
-and attempting to understand.
-
-Disclaimer: I do not understand everything I read :)
+- [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](http://arxiv.org/abs/1603.08155)
+- [A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)
