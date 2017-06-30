@@ -22,6 +22,7 @@ and attempting to understand.)*
 **Course**
 - [Deep Learning - Part 1: MOOC version](http://course.fast.ai) and [USF, Data Institute: Deep Learning - Part 1](https://www.usfca.edu/data-institute/certificates/deep-learning-part-one) from the company [Fast.ai](http://fast.ai)
 - [Data Scientist with Python track - DataCamp](https://www.datacamp.com/tracks/data-scientist-with-python)
+- [Machine Learning by Stanford University - Coursera](https://www.coursera.org/learn/machine-learning)
 
 **Videos**
 - [Deep Learning Demystified](https://youtu.be/Q9Z20HCPnww)
