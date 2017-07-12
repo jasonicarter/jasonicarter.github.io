@@ -45,3 +45,4 @@ and attempting to understand.)*
 - [GAN by Example using Keras on Tensorflow Backend](https://medium.com/towards-data-science/gan-by-example-using-keras-on-tensorflow-backend-1a6d515a60d0)
 - [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](http://arxiv.org/abs/1603.08155)
 - [A Neural Algorithm of Artistic Style](http://arxiv.org/abs/1508.06576)
+- [Convolutional Arithmetic Tutorial](http://deeplearning.net/software/theano/tutorial/conv_arithmetic.html)
